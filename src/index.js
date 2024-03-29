@@ -23,7 +23,19 @@ class Contact extends React.Component {
   render() {
     const login = (
       <form action="#" onSubmit={this.authorize}>
-        <input type="password" placeholder="Password" />
+        <input
+          type="password"
+          placeholder="Password"
+          ref={(input) => {
+            this.passwordInput = input;
+          }}
+          onKeyPress={(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              this.authorize(e);
+            }
+          }}
+        />
         <input type="submit" />
       </form>
     );
